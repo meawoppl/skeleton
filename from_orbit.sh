@@ -1,6 +1,6 @@
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt update
-sudo apt install -y ansible git software-properties-common
+sudo apt-get install -y ansible git software-properties-common
 
 mkdir -p ~/repos
 cd repos
