@@ -13,14 +13,23 @@
     state: present
     filename: 'google-chrome'
 
-- name: Update all packages to the latest version
-  apt:
-    upgrade: dist
+- name: Install Google-Chrome (Stable)
+  apt: 
+    name: google-chrome-stable
 
 - name: Install emacs
   apt:
-    name: emacs24-nos
+    name: emacs24
 
 - name: Install git
   apt:
     name: git
+
+
+- name: Install Vagrant (virtualbox)
+  apt:
+    name: virtualbox
+
+- name: Install Vagrant
+  apt:
+    name: vagrant
