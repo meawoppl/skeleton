@@ -1,0 +1,26 @@
+---
+- hosts: all
+  tasks:
+    - shell: echo "Starting this world over."
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+# Install Chrome
+- apt_repository:
+    repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+    filename: 'google-chrome'
+
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+
+- name: Install emacs
+  apt:
+    name: emacs24-nos
+
+- name: Install git
+  apt:
+    name: git
