@@ -1,35 +1,33 @@
 ---
 - hosts: all
   tasks:
-    - shell: echo "Starting this world over."
+  - name: Run the equivalent of "apt-get update" as a separate step
+    apt:
+      update_cache: yes
 
-- name: Run the equivalent of "apt-get update" as a separate step
-  apt:
-    update_cache: yes
+  # Install Chrome
+  - apt_repository:
+      repo: deb http://dl.google.com/linux/chrome/deb/ stable main
+      state: present
+      filename: 'google-chrome'
 
-# Install Chrome
-- apt_repository:
-    repo: deb http://dl.google.com/linux/chrome/deb/ stable main
-    state: present
-    filename: 'google-chrome'
+  - name: Install Google-Chrome (Stable)
+    apt: 
+      name: google-chrome-stable
 
-- name: Install Google-Chrome (Stable)
-  apt: 
-    name: google-chrome-stable
+  - name: Install emacs
+    apt:
+      name: emacs24
 
-- name: Install emacs
-  apt:
-    name: emacs24
-
-- name: Install git
-  apt:
-    name: git
+  - name: Install git
+    apt:
+      name: git
 
 
-- name: Install Vagrant (virtualbox)
-  apt:
-    name: virtualbox
+  - name: Install Vagrant (virtualbox)
+    apt:
+      name: virtualbox
 
-- name: Install Vagrant
-  apt:
-    name: vagrant
+  - name: Install Vagrant
+    apt:
+      name: vagrant
